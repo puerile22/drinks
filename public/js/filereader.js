@@ -1,68 +1,81 @@
-var pg = require('pg');
-var conString = 'postgres://vagrant:vagrant@localhost:5432/tester';
-var client = new pg.Client(conString);
-client.connect(function(err){
-  if(err){
-    return console.error('could not connect to postgres', err);
-  }
-  client.query('SELECT NOW() as "theTime"', function(err, result){
-    if(err){
-      return console.error('error running query', err);
+var http = require('http');
+var request = require('request');
+var api = '?apiKey=ff13db9df08a460998508c2c35fb5ea7';
+var baseUrl = 'http://addb.absolutdrinks.com';
+var result;
+var quickSearch = function(input) {
+  request({
+    url:baseUrl+'/quickSearch/drinks/'+input+'/'+api,
+    json:true
+  },function(err,response,body) {
+    if (!err && response.statusCode === 200) {
+      result = body;
     }
-    console.log(result.rows[0].theTime);
-    client.end();
-  });
-});
-
-var createTables = function() {
-  client.query('CREATE TABLE IF NOT EXISTS Cocktail(id SERIAL PRIMARY KEY,name text,category text,glass text,ingredient text,instructions text)');
-  client.query('CREATE TABLE IF NOT EXISTS Alcohol(id SERIAL PRIMARY KEY,name text)');
-  client.query('CREATE TABLE IF NOT EXISTS Alcohol_Cocktail(id SERIAL PRIMARY KEY,alcohol_id integer REFERENCES Alcohol(id),cocktail_id integer REFERENCES Cocktail(id))');
-};
-
-var dropTables = function() {
-  client.query('DROP TABLE IF EXISTS Alcohol_Cocktail');
-  client.query('DROP TABLE IF EXISTS Alcohol');
-  client.query('DROP TABLE IF EXISTS Cocktail');
-};
-
-dropTables();
-createTables();
-
-var addCocktail = function() {
-  var str = "INSERT INTO Cocktail(name,category,glass,ingredient,instructions) VALUES ('"+recipe[1]+"','"+recipe[2]+"','"+recipe[4]+"','"+recipe[5]+"','"+recipe[6]+"');";
-  client.query(str,function(err,data){
   });
 };
+//quickSearch('rum');
+//setTimeout(function(){console.log(result['result'][0])},2000);
 
-
-var fs = require('fs');
-fs.readFile('../csv/recipe.csv','utf8',function(err,data){
-  if (err) {
-    console.error(err.message);
-  }
-  var recipee=[];
-  var alcohols=[];
-  var recipes = data.replace(/"/g,'').replace(/'/g,"''").split('\n');
-  for (var i=1;i<recipes.length;i++) {
-    var recipe = recipes[i].split(",");
-    recipee.push("INSERT INTO Cocktail(name,category,glass,ingredient,instructions) VALUES ('"+recipe[1]+"','"+recipe[2]+"','"+recipe[4]+"','"+recipe[5]+"','"+recipe.slice(6,recipe.length-1).join(",")+"');");
-    var alcohol = recipe[recipe.length-1].split("|");
-    for (var j=0;j<alcohol.length;j++) {
-      alcohols.push("INSERT INTO Alcohol(name) VALUES('"+alcohol[j]+"');");
+var searchWithType = function(input) {
+  input = input.replace(/\W/g, ' ').split(" ");
+  for (var i=0;i<input.length;i++){
+    if (i !== 0) {
+      input[i] = '/and/'+input[i];
     }
   }
-  recipee = recipee.join(' ');
-  alcohols = alcohols.join(' ');
-  //console.log(recipee);
-  console.log(alcohols);
-  client.query(recipee,function(err,data){
-    client.end();
+  input = input.join("");
+  request({
+    url:baseUrl+'/drinks/withtype/'+input+'/'+api,
+    json:true
+  },function(err,response,body) {
+    if (!err && response.statusCode === 200) {
+      result = body;
+      console.log(result);
+    }
   });
-  client.query(alcohols,function(err,data){
-    client.end();
-  });
-    //addAlcohol(recipe[7].split("|"),id);
+};
+//searchWithType('rum vodka');
 
-});
+var randomDrink = function() {
+  var rate = Math.floor(Math.random()*94);
+  request({
+    url:baseUrl+'/drinks/rating/'+rate+'/'+api,
+    json:true
+  },function(err,response,body) {
+    if (!err && response.statusCode === 200) {
+      result = body.result[0];
+      console.log(result);
+    }
+  });
+};
+
+//randomDrink();
+var pick = function(skill,taste,occasion,color) {
+  var url = baseUrl+'/drinks';
+  if (skill !== 0 ) {
+    url = url + '/skill/'+skill;
+  }
+  if (taste !== 0 ) {
+    url = url + '/tasting/'+taste;
+  }
+  if (occasion !== 0 ) {
+    url = url + '/for/'+occasion;
+  }
+  if (color !== 0 ) {
+    url = url + '/colored/'+color;
+  }
+  url = url+'/'+api;
+  request({
+    url:url,
+    json:true
+  },function(err,response,body) {
+    if (!err && response.statusCode === 200) {
+      result = body.result;
+      console.log(result);
+    }
+  });
+};
+
+pick(2,'sweet','afternoon','red','rocks-glass');
+
 
