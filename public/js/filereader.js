@@ -41,12 +41,18 @@ fs.readFile('../csv/recipe.csv','utf8',function(err,data){
   if (err) {
     console.error(err.message);
   }
+  var add = '';
   var recipes = data.replace(/"/g,'').replace(/'/g,"''").split('\n');
    for (var i=1; i<recipes.length; i++) {
     var recipe = recipes[i].split(',');
-    var id = addCocktail(recipe[1],recipe[2],recipe[4],recipe[5],recipe[6]);
+    add += "INSERT INTO Cocktail(name,category,glass,ingredient,instructions) VALUES ('"+recipe[1]+"','"+recipe[2]+"','"+recipe[4]+"','"+recipe[5]+"','"+recipe[6]+"');";
+    // var id = addCocktail(recipe[1],recipe[2],recipe[4],recipe[5],recipe[6]);
     //addAlcohol(recipe[7].split("|"),id);
+    // console.log(add);
   }
+  client.query(add);
 
 });
 
+var c = client.query("SELECT * FROM cocktail WHERE id = 2");
+console.log(c);
