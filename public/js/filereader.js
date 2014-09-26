@@ -29,10 +29,10 @@ var dropTables = function() {
 dropTables();
 createTables();
 
-var addCocktail = function(name,category,glass,ingredient,instructions) {
-  var str = "INSERT INTO Cocktail(name,category,glass,ingredient,instructions) VALUES ('"+name+"','"+category+"','"+glass+"','"+ingredient+"','"+instructions+"');";
-  console.log(str);
-  client.query(str);
+var addCocktail = function() {
+  var str = "INSERT INTO Cocktail(name,category,glass,ingredient,instructions) VALUES ('"+recipe[1]+"','"+recipe[2]+"','"+recipe[4]+"','"+recipe[5]+"','"+recipe[6]+"');";
+  client.query(str,function(err,data){
+  });
 };
 
 
@@ -41,12 +41,28 @@ fs.readFile('../csv/recipe.csv','utf8',function(err,data){
   if (err) {
     console.error(err.message);
   }
+  var recipee=[];
+  var alcohols=[];
   var recipes = data.replace(/"/g,'').replace(/'/g,"''").split('\n');
-   for (var i=1; i<recipes.length; i++) {
-    var recipe = recipes[i].split(',');
-    var id = addCocktail(recipe[1],recipe[2],recipe[4],recipe[5],recipe[6]);
-    //addAlcohol(recipe[7].split("|"),id);
+  for (var i=1;i<recipes.length;i++) {
+    var recipe = recipes[i].split(",");
+    recipee.push("INSERT INTO Cocktail(name,category,glass,ingredient,instructions) VALUES ('"+recipe[1]+"','"+recipe[2]+"','"+recipe[4]+"','"+recipe[5]+"','"+recipe.slice(6,recipe.length-1).join(",")+"');");
+    var alcohol = recipe[recipe.length-1].split("|");
+    for (var j=0;j<alcohol.length;j++) {
+      alcohols.push("INSERT INTO Alcohol(name) VALUES('"+alcohol[j]+"');");
+    }
   }
+  recipee = recipee.join(' ');
+  alcohols = alcohols.join(' ');
+  //console.log(recipee);
+  console.log(alcohols);
+  client.query(recipee,function(err,data){
+    client.end();
+  });
+  client.query(alcohols,function(err,data){
+    client.end();
+  });
+    //addAlcohol(recipe[7].split("|"),id);
 
 });
 
