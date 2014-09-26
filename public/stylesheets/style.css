@@ -118,25 +118,47 @@ header {
    * Note the use of the `main-color`
    * variable and the `darken` function
    */
-  background-color: #fa5b4d;
-  border-bottom: 1px solid #df1806;
-  text-shadow: 0px -1px 0px #df1806;
+  background-color: #838387;
+  border-bottom: 1px solid #5c5c5f;
+  text-shadow: 0px -1px 0px #5c5c5f;
 }
 .container {
-  width: 500px;
-  margin: 50px auto;
+  width: 650px;
+  margin-top: 10px;
+  margin-left: 50px;
+  float: left;
   overflow: hidden;
+  border: 1px #000 dashed;
 }
-.main-content {
+.search {
   float: left;
   width: 300px;
+  margin-left: 150px;
 }
-.main-content p {
-  margin-bottom: 20px;
+.main-content {
+  width: 650px;
+  float: left;
+  border: 1px #000 solid;
+}
+label {
+  float: left;
+  width: 100px;
+  margin-left: 5px;
+}
+.bottle {
+  margin-top: 5px;
+}
+.find {
+  margin-left: 5px;
+}
+.fa-random {
+  float: right;
 }
 .sidebar {
   float: left;
-  width: 200px;
+  width: 250px;
+  height: 500px;
+  border-right: 1px solid #000;
 }
 .sidebar .widget {
 /*
@@ -170,7 +192,8 @@ p {
   line-height: 1.8;
 }
 footer {
-  width: 500px;
+  clear: both;
+  width: 1000px;
   margin: 50px auto;
   border-top: 1px dotted #ccc;
   padding-top: 5px;

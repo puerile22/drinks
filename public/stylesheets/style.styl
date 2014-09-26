@@ -17,7 +17,7 @@ global-reset()
  * Store the main color and
  * background color as variables
  */
-main-color = #fa5b4d
+main-color = #838387
 background-color = #faf9f0
 
 body
@@ -41,20 +41,42 @@ header
   text-shadow 0px -1px 0px darken(main-color, 30%)
 
 .container
-  width 500px
-  margin 50px auto
+  width 650px
+  margin-top 10px
+  margin-left 50px
+  float left
   overflow hidden
+  border 1px black dashed
 
-.main-content
+.search
   float left
   width 300px
+  margin-left 150px
 
-  p
-    margin-bottom 20px
+.main-content
+  width 650px
+  float left
+  border 1px black solid
+
+label
+  float left
+  width 100px
+  margin-left 5px
+
+.bottle
+  margin-top 5px
+
+.find
+  margin-left 5px
+
+.fa-random
+  float right
 
 .sidebar
   float left
-  width 200px
+  width 250px
+  height 500px
+  border-right 1px solid black
 
   .widget
 
@@ -86,7 +108,8 @@ p
   line-height 1.8
 
 footer
-  width 500px
+  clear both
+  width 1000px
   margin 50px auto
   border-top 1px dotted #ccc
   padding-top 5px
