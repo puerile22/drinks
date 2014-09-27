@@ -2,9 +2,12 @@ doctype
 html
   head
     title #{title} - My Site
+    script(src='https://code.jquery.com/jquery-2.1.1.min.js')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.js")
     link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')
-    script(src='./js.majiks.js')
+    script(src="https://cdn.socket.io/socket.io-1.1.0.js")
+    script(src="./js/majiks.js")
   body
     header
       h1 Drankzzz
@@ -13,7 +16,7 @@ html
     .container
       .search
         block search
-      i.fa.fa-random
+      i.fa.fa-random.fa-2x
       .main-content
         block content
     footer
