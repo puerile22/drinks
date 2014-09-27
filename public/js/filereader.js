@@ -3,16 +3,35 @@ var request = require('request');
 var api = '?apiKey=ff13db9df08a460998508c2c35fb5ea7';
 var baseUrl = 'http://addb.absolutdrinks.com';
 var result;
+var fs = require('fs');
+var handle = require('handlebars');
+var source = ".search-result \n  img src=http://assets.absolutdrinks.com/drinks/200x300/{{id}}.png)/ \n  p {{id}}" 
+var template = handle.compile(source);
+var jquery = require('jquery');
+var jsdom = require('jsdom');
+var window = jsdom.jsdom().parentWindow;
+var searchResult = function(input) {
+  var htmlSource = fs.readFileSync('views/layout.jade','utf8');
+  console.log(htmlSource);
+    for (var i =0;i<10;i++) {
+      html = template(input[i]);
+        console.log(html);
+      jsdom.env(htmlSource, ["http://code.jquery.com/jquery.js"], function (errors, window) {
+        var $ = window.$;
+        $(".main-content").append(html);
+      });
+      //$('.main-content').append(html);
+    };
+  };
+
 exports.quickSearch = function(input) {
-  console.log(input);
   request({
     url:baseUrl+'/quickSearch/drinks/'+input+'/'+api,
     json:true
   },function(err,response,body) {
     if (!err && response.statusCode === 200) {
       result = body.result;
-      console.log(result);
-      return result;
+      searchResult(result);
     }
   });
 };
@@ -27,14 +46,13 @@ exports.searchWithType = function(input) {
     }
   }
   input = input.join("");
-  console.log(input);
   request({
     url:baseUrl+'/drinks/withtype/'+input+'/'+api,
     json:true
   },function(err,response,body) {
     if (!err && response.statusCode === 200) {
       result = body.result;
-      console.log(result);
+      //console.log(result);
       return result;
     }
   });
