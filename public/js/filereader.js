@@ -6,10 +6,9 @@ var baseUrl = 'http://addb.absolutdrinks.com';
 var result,h;
 var fs = require('fs');
 var handle = require('handlebars');
-var source = '<div class="search-result"><img src="http://assets.absolutdrinks.com/drinks/200x300/{{id}}.png"><p>{{id}}</p></div>' 
+var source = '<div class="search-result"><img src="http://assets.absolutdrinks.com/drinks/200x300/{{ id }}.png"><p>{{ name }}</p></div>' 
 var template = handle.compile(source);
 // var jquery = require('jquery');
-// var jsdom = require('jsdom');
 // var window = jsdom.jsdom().parentWindow;
 
 var jsdom = require('jsdom');
@@ -26,14 +25,18 @@ var searchResult = function(input) {
 //     }
 //   });
 // };
-jsdom.env(
-    "http://10.10.10.10:9494",
-    ['http://code.jquery.com/jquery-1.6.min.js'],
-    function(err, window) {
-        var $ = window.jQuery;
-        $('.main-content').append('<p>abc</p>');
-    }
-);
+  for (var i =0;i<10;i++) {
+    h = template(input[i]);
+    console.log(h);
+    jsdom.env(
+      "http://10.10.10.10:9494",
+      ['http://code.jquery.com/jquery-1.6.min.js'],
+      function(err, window) {
+          var $ = window.jQuery;
+          $('.main-content').append(h);
+      }
+    );
+  };
 };
   // var htmlSource = fs.readFileSync('views/layout.jade','utf8');
   // console.log(htmlSource);
