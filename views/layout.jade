@@ -8,9 +8,17 @@ html
     link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')
     script(src="https://cdn.socket.io/socket.io-1.1.0.js")
     script(id="search-result" type="text/x-handlebars-template")
-      .search-result 
-        img(src='http://assets.absolutdrinks.com/drinks/200x300/{{id}}.png')/
-        p {{id}} 
+      .search-result
+        img(id="{{id}}" src='http://assets.absolutdrinks.com/drinks/200x300/{{ id }}.png')
+        p {{ name }} 
+    script(id="single-recipe" type="text/x-handlebars-template")
+      .single-recipe
+        h3 {{ name }}
+        img(id='{{id}}' src='http://assets.absolutdrinks.com/drinks/200x300/{{ id }}.png')
+        h3 Ingredients
+        p {{#each ingredients}}{{this.textPlain}}{{/each}}
+        h3 How to mix
+        p {{descriptionPlain}}
     script(src="./js/majiks.js")
   body
     header

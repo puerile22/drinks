@@ -14,30 +14,33 @@ var template = handle.compile(source);
 var jsdom = require('jsdom');
 
 var searchResult = function(input) {
-//   request('http://10.10.10.10:9494', function (error, response, html) {
-//     if (!error && response.statusCode == 200) {
-//       var $ = cheerio.load(html);
-//       for (var i =0;i<10;i++) {
-//         h = template(input[i]);
-//         console.log(h);
-//         $('.main').append(h);
-//       };
-//     }
-//   });
-// };
-  for (var i =0;i<10;i++) {
-    h = template(input[i]);
-    console.log(h);
-    jsdom.env(
-      "http://10.10.10.10:9494",
-      ['http://code.jquery.com/jquery-1.6.min.js'],
-      function(err, window) {
-          var $ = window.jQuery;
-          $('.main-content').append(h);
-      }
-    );
-  };
+  request('http://10.10.10.10:9494', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var $ = cheerio.load(body);
+      // for (var i =0;i<10;i++) {
+      //   h = template(input[i]);
+      //   console.log(i);
+      //   console.log(h);
+      console.log($('.main-content'))
+        $('.main-content').append('<p>aljfa</p>');
+        $.html();
+      //};
+    }
+  });
 };
+  // for (var i =0;i<10;i++) {
+  //   h = template(input[i]);
+  //   console.log(h);
+  //   jsdom.env(
+  //     "http://10.10.10.10:9494",
+  //     ['https://code.jquery.com/jquery-2.1.1.min.js'],
+  //     function(err, window) {
+  //       var $ = window.jQuery;
+  //       window.$('.main-content').append(h);
+  //     }
+  //   );
+  // };
+// };
   // var htmlSource = fs.readFileSync('views/layout.jade','utf8');
   // console.log(htmlSource);
   //   for (var i =0;i<10;i++) {
@@ -59,6 +62,7 @@ exports.quickSearch = function(input) {
     if (!err && response.statusCode === 200) {
       result = body.result;
       searchResult(result);
+      //return result;
     }
   });
 };

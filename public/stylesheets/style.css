@@ -140,6 +140,7 @@ header {
   width: 650px;
   float: left;
   border: 1px #000 solid;
+  overflow: auto;
 }
 label {
   float: left;
