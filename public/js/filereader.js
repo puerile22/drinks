@@ -1,28 +1,52 @@
 var http = require('http');
 var request = require('request');
+var cheerio = require('cheerio');
 var api = '?apiKey=ff13db9df08a460998508c2c35fb5ea7';
 var baseUrl = 'http://addb.absolutdrinks.com';
-var result;
+var result,h;
 var fs = require('fs');
 var handle = require('handlebars');
-var source = ".search-result \n  img src=http://assets.absolutdrinks.com/drinks/200x300/{{id}}.png)/ \n  p {{id}}" 
+var source = '<div class="search-result"><img src="http://assets.absolutdrinks.com/drinks/200x300/{{id}}.png"><p>{{id}}</p></div>' 
 var template = handle.compile(source);
-var jquery = require('jquery');
+// var jquery = require('jquery');
+// var jsdom = require('jsdom');
+// var window = jsdom.jsdom().parentWindow;
+
 var jsdom = require('jsdom');
-var window = jsdom.jsdom().parentWindow;
+
 var searchResult = function(input) {
-  var htmlSource = fs.readFileSync('views/layout.jade','utf8');
-  console.log(htmlSource);
-    for (var i =0;i<10;i++) {
-      html = template(input[i]);
-        console.log(html);
-      jsdom.env(htmlSource, ["http://code.jquery.com/jquery.js"], function (errors, window) {
-        var $ = window.$;
-        $(".main-content").append(html);
-      });
-      //$('.main-content').append(html);
-    };
-  };
+//   request('http://10.10.10.10:9494', function (error, response, html) {
+//     if (!error && response.statusCode == 200) {
+//       var $ = cheerio.load(html);
+//       for (var i =0;i<10;i++) {
+//         h = template(input[i]);
+//         console.log(h);
+//         $('.main').append(h);
+//       };
+//     }
+//   });
+// };
+jsdom.env(
+    "http://10.10.10.10:9494",
+    ['http://code.jquery.com/jquery-1.6.min.js'],
+    function(err, window) {
+        var $ = window.jQuery;
+        $('.main-content').append('<p>abc</p>');
+    }
+);
+};
+  // var htmlSource = fs.readFileSync('views/layout.jade','utf8');
+  // console.log(htmlSource);
+  //   for (var i =0;i<10;i++) {
+  //     html = template(input[i]);
+  //       console.log(html);
+  //     jsdom.env(htmlSource, ["http://code.jquery.com/jquery.js"], function (errors, window) {
+  //       var $ = window.$;
+  //       $(".main-content").append(html);
+  //     });
+  //     //$('.main-content').append(html);
+  //   };
+  // };
 
 exports.quickSearch = function(input) {
   request({

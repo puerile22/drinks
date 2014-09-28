@@ -9,11 +9,11 @@ var result;
 var fs = require('fs');
 //var jsdom = require("jsdom");
 //var $ = require('jquery');
-var handle = require('handlebars');
-var source = ".search-result"
-             "  img src=http://assets.absolutdrinks.com/drinks/200x300/{{id}}.png)/"
-             "  p {{id}}" 
-var template = handle.compile(source);
+// var handle = require('handlebars');
+// var source = ".search-result"
+//              "  img src=http://assets.absolutdrinks.com/drinks/200x300/{{id}}.png)/"
+//              "  p {{id}}" 
+// var template = handle.compile(source);
 // var searchResult = function(input) {
 //   //var htmlSource = fs.readFileSync('./views/index.jade','utf8');
 //   //call_jsdom(htmlSource, function (window) {
