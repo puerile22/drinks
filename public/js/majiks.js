@@ -6,6 +6,7 @@ var templateSingle = Handlebars.compile(sourceSingle);
 var h,searchResult;
 var socket = io();
 socket.on('search result',function(input){
+  $('.main-content').prepend('<h1>Search Result</h1>');
   var n = 12;
   if (input.length<12 && input.length !== 0) {
     n = input.length;
@@ -22,19 +23,18 @@ socket.on('search result',function(input){
 socket.on('single recipe',function(input){
   input.video = input.videos[0].video;
   h = templateSingle(input);
-  console.log(h);
   $('.main-content').append(h);
 });
 
 socket.on('random recipe',function(input){
   input.video = input.videos[0].video;
   h = templateSingle(input);
-  console.log(h);
   $('.main-content').append(h);
   $('.main-content').find('.back').remove();
 });
 
 socket.on('top recipe',function(input){
+  $('.main-content').prepend('<h1>Top Drinks</h1>');
   var array=[];
   for(var i = 0;i<9;i++) {
     var j = Math.floor(Math.random()*input.length);

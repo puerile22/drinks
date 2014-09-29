@@ -148,6 +148,11 @@ iframe {
   overflow: auto;
   position: relative;
 }
+.main-content h1 {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 10px;
+}
 #name {
   text-align: center;
   font-weight: bold;
@@ -178,6 +183,8 @@ iframe {
   display: inline-block;
   position: relative;
   margin-left: 10px;
+  height: 340px;
+  width: 200px;
 }
 .search-result p {
   text-align: center;
