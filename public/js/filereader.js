@@ -8,8 +8,6 @@ var fs = require('fs');
 var handle = require('handlebars');
 var source = '<div class="search-result"><img src="http://assets.absolutdrinks.com/drinks/200x300/{{ id }}.png"><p>{{ name }}</p></div>' 
 var template = handle.compile(source);
-// var jquery = require('jquery');
-// var window = jsdom.jsdom().parentWindow;
 
 var jsdom = require('jsdom');
 
@@ -62,12 +60,9 @@ exports.quickSearch = function(input) {
     if (!err && response.statusCode === 200) {
       result = body.result;
       searchResult(result);
-      //return result;
     }
   });
 };
-//quickSearch('rum');
-//setTimeout(function(){console.log(result['result'][0])},2000);
 
 exports.searchWithType = function(input) {
   input = input.replace(/\W/g, ' ').split(" ");
@@ -83,12 +78,10 @@ exports.searchWithType = function(input) {
   },function(err,response,body) {
     if (!err && response.statusCode === 200) {
       result = body.result;
-      //console.log(result);
       return result;
     }
   });
 };
-//searchWithType('rum vodka');
 
 exports.randomDrink = function() {
   var rate = Math.floor(Math.random()*200);
@@ -135,6 +128,5 @@ exports.pick = function(arr) {
   });
 };
 
-//pick(2,'sweet','afternoon','red','rocks-glass');
 
 

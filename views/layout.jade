@@ -1,7 +1,7 @@
 doctype
 html
   head
-    title #{title} - My Site
+    title #{title} - Drankzzz
     script(src='https://code.jquery.com/jquery-2.1.1.min.js')
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.js")
@@ -13,17 +13,22 @@ html
         p {{ name }} 
     script(id="single-recipe" type="text/x-handlebars-template")
       .single-recipe
-        h3 {{ name }}
-        img(id='{{id}}' src='http://assets.absolutdrinks.com/drinks/200x300/{{ id }}.png')
-        h3 Ingredients
-        p {{#each ingredients}}{{this.textPlain}}{{/each}}
-        h3 How to mix
-        p {{descriptionPlain}}
-        iframe(width="480" height="360" src="https://www.youtube.com/embed/{{ id }}" allowFullScreen)
+        h1#name {{ name }}
+        img(id='{{id}}' class='single-img' src='http://assets.absolutdrinks.com/drinks/310x420/{{ id }}.png')
+        .info
+          h3 Ingredients
+          {{#each ingredients}}
+          p {{this.textPlain}}
+          {{/each}}
+          h3 How to mix
+          p {{descriptionPlain}}
+        iframe(width="640" height="480" src="https://www.youtube.com/embed/{{ video }}" allowFullScreen)
+        button.back Back to Results
     script(src="./js/majiks.js")
   body
     header
-      h1 Drankzzz
+      h1 
+        a(href='/') Drankzzz
     .sidebar
       block sidebar
     .container

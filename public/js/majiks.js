@@ -6,8 +6,8 @@ var templateSingle = Handlebars.compile(sourceSingle);
 var h,searchResult;
 var socket = io();
 socket.on('search result',function(input){
-  var n = 10;
-  if (input.length<10 && input.length !== 0) {
+  var n = 12;
+  if (input.length<12 && input.length !== 0) {
     n = input.length;
   } else if (input.length === 0){
     $('.main-content').append('<h2>No results found! Please try again.</h2>');
@@ -20,9 +20,28 @@ socket.on('search result',function(input){
 });
 
 socket.on('single recipe',function(input){
+  input.video = input.videos[0].video;
   h = templateSingle(input);
   console.log(h);
   $('.main-content').append(h);
+});
+
+socket.on('random recipe',function(input){
+  input.video = input.videos[0].video;
+  h = templateSingle(input);
+  console.log(h);
+  $('.main-content').append(h);
+  $('.main-content').find('.back').remove();
+});
+
+socket.on('top recipe',function(input){
+  var array=[];
+  for(var i = 0;i<9;i++) {
+    var j = Math.floor(Math.random()*input.length);
+    array.push(input.splice(j,1));
+    h = template(array[i][0]);
+    $('.main-content').append(h);
+  }
 });
 
 $(document).ready(function(){
@@ -66,5 +85,8 @@ $(document).ready(function(){
     var id = $(this).attr('id');
     $('.main-content').empty();
     socket.emit('result',id);
+  });
+  $('.main-content').on('click','.back',function(){
+    $('.main-content').empty().append(searchResult);
   });
 });
