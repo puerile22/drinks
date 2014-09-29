@@ -63,19 +63,7 @@ function compile(str, path) {
 
 //searchWithType('rum vodka');
 
-var randomDrink = function() {
-  var rate = Math.floor(Math.random()*200);
-  request({
-    url:baseUrl+'/drinks/rating/lte'+rate+'/'+api,
-    json:true
-  },function(err,response,body) {
-    if (!err && response.statusCode === 200) {
-      result = body.result[0];
-      console.log(result);
-      return result;
-    }
-  });
-};
+
 
 
 app.set('views', __dirname + '/views')
@@ -168,12 +156,24 @@ io.on('connection', function(socket){
       }
     });
   };
+  var randomDrink = function() {
+    var rate = Math.floor(Math.random()*200);
+    request({
+      url:baseUrl+'/drinks/rating/lte'+rate+'/'+api,
+      json:true
+    },function(err,response,body) {
+      if (!err && response.statusCode === 200) {
+        result = body.result[0];
+        socket.emit('single recipe',result);
+      }
+    });
+  };
   socket.on('find', function(arr){
     pick(arr);
     //searchResult(result);
   });
   socket.on('random',function(){
-    andomDrink();
+    randomDrink();
   });
   socket.on('name search',function(input){
     quickSearch(input);

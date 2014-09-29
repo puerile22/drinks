@@ -9,7 +9,7 @@ html
     script(src="https://cdn.socket.io/socket.io-1.1.0.js")
     script(id="search-result" type="text/x-handlebars-template")
       .search-result
-        img(id="{{id}}" src='http://assets.absolutdrinks.com/drinks/200x300/{{ id }}.png')
+        img(class="list" id="{{id}}" src='http://assets.absolutdrinks.com/drinks/200x300/{{ id }}.png')
         p {{ name }} 
     script(id="single-recipe" type="text/x-handlebars-template")
       .single-recipe
@@ -19,6 +19,7 @@ html
         p {{#each ingredients}}{{this.textPlain}}{{/each}}
         h3 How to mix
         p {{descriptionPlain}}
+        iframe(width="480" height="360" src="https://www.youtube.com/embed/{{ id }}" allowFullScreen)
     script(src="./js/majiks.js")
   body
     header

@@ -6,7 +6,14 @@ var templateSingle = Handlebars.compile(sourceSingle);
 var h,searchResult;
 var socket = io();
 socket.on('search result',function(input){
-  for (var i =0;i<10;i++) {
+  var n = 10;
+  if (input.length<10 && input.length !== 0) {
+    n = input.length;
+  } else if (input.length === 0){
+    $('.main-content').append('<h2>No results found! Please try again.</h2>');
+    return; 
+  } 
+  for (var i =0;i<n;i++) {
     h = template(input[i]);
     $('.main-content').append(h);
   }
@@ -20,6 +27,7 @@ socket.on('single recipe',function(input){
 
 $(document).ready(function(){
   $('.fa-random').click(function(e){
+    $('.main-content').empty();
     socket.emit('random',function(){
     });
   });
@@ -53,12 +61,10 @@ $(document).ready(function(){
     socket.emit('find',arr);
     setTimeout(function(){$('.bottle').find('select').val('0');},1000);
   });
-  $('.main-content').on('click','img',function(){
+  $('.main-content').on('click','.list',function(){
     searchResult = $('.main-content').children();
     var id = $(this).attr('id');
     $('.main-content').empty();
-    console.log(id);
     socket.emit('result',id);
   });
-
 });
