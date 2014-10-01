@@ -1,11 +1,12 @@
 {
-  "name": "MySite",
+  "name": "drankzzzz",
   "version": "0.0.1",
   "private": "true",
   "dependencies": {
     "express": "3.0.0alpha4",
     "jade": "*",
     "nib": "*",
+    "request": "^2.48.0",
     "socket.io": "^1.1.0",
     "stylus": "*"
   }
