@@ -1,0 +1,55 @@
+extend layout
+block search
+  h1.title Cocktails & mixed drink recipes
+  select#type
+    option(value='name') Name
+    option(value='ingredients') Ingredients
+  input.search-text(type='text')
+  i.fa.fa-search.fa-2x
+
+block content
+
+  
+block sidebar
+  .bottle
+    h2 Advanced search
+    label(for='skill') Skill Level:
+    select#skill
+      option(value=0) --None--
+      option(value=1) Easy
+      option(value=2) Average
+      option(value=3) Advanced
+    label(for='taste') Taste:
+    select#taste
+      option(value=0) --None--
+      option(value='bitter') Bitter
+      option(value='fresh') Fresh
+      option(value='fruity') Fruity
+      option(value='herb') Herb
+      option(value='spicy') Spicy
+      option(value='sweet') Sweet
+      option(value='sour') Sour
+    label(for='occasion') Occasion:
+    select#occasion
+      option(value=0) --None--
+      option(value='afternoon') Afternoon Drinks
+      option(value='evening') Evening Drinks
+      option(value='pre-dinner') Pre-Dinner Drinks
+      option(value='after-dinner') After-Dinner Drinks
+    label(for='color') Color:
+    select#color
+      option(value=0) --None--
+      option(value='red') Red
+      option(value='pink') Pink
+      option(value='yellow') Yellow
+      option(value='brown') Brown
+      option(value='blue') Blue
+      option(value='green') Green
+      option(value='purple') Purple
+      option(value='transparent') Clear
+      option(value='white') White
+    br
+    button.find Find
+
+
+    

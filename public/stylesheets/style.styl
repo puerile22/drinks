@@ -1,0 +1,158 @@
+/*
+ * Import nib
+ */
+@import 'nib'
+
+/*
+ * Grab a custom font from Google
+ */
+@import url('http://fonts.googleapis.com/css?family=Quicksand')
+
+/*
+ * Nib provides a CSS reset
+ */
+global-reset()
+
+/*
+ * Store the main color and
+ * background color as variables
+ */
+main-color = #838387
+background-color = #faf9f0
+
+body
+  font-family 'Georgia'
+  background-color black
+  color #444
+
+header
+  font-family 'Quicksand'
+  padding 50px 10px
+  color black
+  font-size 25px
+  text-align center
+
+
+  /*
+   * Note the use of the `main-color`
+   * variable and the `darken` function
+   */
+  background-color black
+  border-bottom 1px solid darken(main-color, 30%)
+  text-shadow 0px -1px 0px darken(main-color, 30%)
+
+.container
+  width 900px
+  margin-top 10px
+  margin-left 50px
+  float left
+  overflow hidden
+  background-color black
+a 
+  text-decoration none
+  color white
+.search
+  float left
+  height 100px
+  width 800px
+  margin-left 100px
+  h1
+    font-size 35px
+    color white
+    text-align center
+    margin-top 10px
+    margin-bottom 15px
+
+.search-text 
+  width 600px
+  height 40px
+  font-size 30px
+  background-color #262626
+  color white
+
+iframe
+  margin-top 20px
+
+.container
+  color white
+  width 900px
+  float left
+  overflow auto
+  position relative
+  h1
+    font-size 30px
+    text-align center
+    margin-bottom 10px
+    margin-top 10px
+
+#name 
+  text-align center
+  font-weight bold
+  font-size 25px
+  margin-bottom 20px
+
+.single-img
+  float left
+
+.info
+  float left
+  display inline-block
+  width 400px
+  margin-right 20px
+  margin-top 60px
+  margin-left 20px
+  h3
+    font-weight bold
+    text-align center
+    margin-top 20px
+    text-decoration underline
+  p
+    text-align center
+  p:last-child 
+    text-align left
+
+.search-result
+  float left
+  display inline-block
+  position relative
+  margin-left 10px
+  height 340px
+  width 200px
+
+  p 
+    text-align center
+
+label
+  float left
+  width 100px
+  margin-left 5px
+
+.bottle
+  margin-top 5px
+
+.find
+  margin-left 5px
+
+.fa-random
+  float right
+
+.sidebar
+  float left
+  width 250px
+  height 500px
+  color white
+  h2
+    margin-left 10px
+    margin-bottom 20px
+
+  
+p
+  line-height 1.8
+
+footer
+  clear both
+  width 1000px
+  margin 50px auto
+  border-top 1px dotted #ccc
+  padding-top 5px
+  font-size 13px

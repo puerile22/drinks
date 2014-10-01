@@ -1,0 +1,43 @@
+doctype
+html
+  head
+    title #{title} - Drankzzz
+    script(src='https://code.jquery.com/jquery-2.1.1.min.js')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.js")
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')
+    script(src="https://cdn.socket.io/socket.io-1.1.0.js")
+    script(id="search-result" type="text/x-handlebars-template")
+      .search-result
+        a(href='' onclick='return false;')
+          img(class="list" id="{{id}}" src='http://assets.absolutdrinks.com/drinks/solid-background-black/soft-shadow/floor-reflection/200x300/{{ id }}.png')
+        p {{ name }} 
+    script(id="single-recipe" type="text/x-handlebars-template")
+      .single-recipe
+        h1#name {{ name }}
+        img(id='{{id}}' class='single-img' src='http://assets.absolutdrinks.com/drinks/solid-background-black/soft-shadow/floor-reflection/310x420/{{ id }}.png')
+        .info
+          h3 Ingredients
+          {{#each ingredients}}
+          p {{this.textPlain}}
+          {{/each}}
+          h3 How to mix
+          p {{descriptionPlain}}
+        iframe(width="800" height="600" src="https://www.youtube.com/embed/{{ video }}" allowFullScreen)
+        button.back Back to Results
+    script(src="./js/majiks.js")
+  body
+    header
+      h1 
+        a(href='/') Drankzzz
+    .sidebar
+      block sidebar
+    .search
+      block search
+    p.random Don't know what to search? Click me!  
+    a(href='' onclick='return false;')   
+      i.fa.fa-random.fa-2x
+    .container
+        block content
+    footer
+      p #TeamPengPong

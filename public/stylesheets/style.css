@@ -1,0 +1,247 @@
+/*
+ * Import nib
+ */
+/*
+ * Grab a custom font from Google
+ */
+@import url("http://fonts.googleapis.com/css?family=Quicksand");
+/*
+ * Nib provides a CSS reset
+ */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+/*
+ * Store the main color and
+ * background color as variables
+ */
+body {
+  font-family: 'Georgia';
+  background-color: #000;
+  color: #444;
+}
+header {
+  font-family: 'Quicksand';
+  padding: 50px 10px;
+  color: #000;
+  font-size: 25px;
+  text-align: center;
+/*
+   * Note the use of the `main-color`
+   * variable and the `darken` function
+   */
+  background-color: #000;
+  border-bottom: 1px solid #5c5c5f;
+  text-shadow: 0px -1px 0px #5c5c5f;
+}
+.container {
+  width: 900px;
+  margin-top: 10px;
+  margin-left: 50px;
+  float: left;
+  overflow: hidden;
+  background-color: #000;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+.search {
+  float: left;
+  height: 100px;
+  width: 800px;
+  margin-left: 100px;
+}
+.search h1 {
+  font-size: 35px;
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.search-text {
+  width: 600px;
+  height: 40px;
+  font-size: 30px;
+  background-color: #262626;
+  color: #fff;
+}
+iframe {
+  margin-top: 20px;
+}
+.container {
+  color: #fff;
+  width: 900px;
+  float: left;
+  overflow: auto;
+  position: relative;
+}
+.container h1 {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+#name {
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.single-img {
+  float: left;
+}
+.info {
+  float: left;
+  display: inline-block;
+  width: 400px;
+  margin-right: 20px;
+  margin-top: 60px;
+  margin-left: 20px;
+}
+.info h3 {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  text-decoration: underline;
+}
+.info p {
+  text-align: center;
+}
+.info p:last-child {
+  text-align: left;
+}
+.search-result {
+  float: left;
+  display: inline-block;
+  position: relative;
+  margin-left: 10px;
+  height: 340px;
+  width: 200px;
+}
+.search-result p {
+  text-align: center;
+}
+label {
+  float: left;
+  width: 100px;
+  margin-left: 5px;
+}
+.bottle {
+  margin-top: 5px;
+}
+.find {
+  margin-left: 5px;
+}
+.fa-random {
+  float: right;
+}
+.sidebar {
+  float: left;
+  width: 250px;
+  height: 500px;
+  color: #fff;
+}
+.sidebar h2 {
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+p {
+  line-height: 1.8;
+}
+footer {
+  clear: both;
+  width: 1000px;
+  margin: 50px auto;
+  border-top: 1px dotted #ccc;
+  padding-top: 5px;
+  font-size: 13px;
+}
