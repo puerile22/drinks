@@ -14,7 +14,7 @@ module.exports = function(input){
   };
 
   var pick = function(func) {
-    var skill = parseInt(input[0]);
+    var skill = input[0];
     var taste = input[1];
     var occasion = input[2];
     var color = input[3];
