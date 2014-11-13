@@ -208,6 +208,11 @@ label {
   width: 250px;
   height: 500px;
 }
+.list:hover,
+.fa:hover,
+.find:hover {
+  cursor: pointer;
+}
 p {
   line-height: 1.8;
 }
