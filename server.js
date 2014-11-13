@@ -7,16 +7,13 @@ var io = require('socket.io')(http);
 var result;
 var absolut = require('./app/js/absolutAPI');
 
-var config = {
-  port: 8080
-}
-
 function compile(str, path) {
   return stylus(str)
     .set('filename', path)
     .use(nib());
 }
 
+app.set('port', (process.env.PORT || 8080))
 app.set('views', __dirname + '/app/views');
 app.set('view engine', 'jade');
 app.use(express.logger('dev'));
@@ -84,6 +81,6 @@ io.on('connection', function(socket){
   absolutAPI.topDrink(callbackConstructor('top recipe'));
 });
 
-http.listen(config.port, function(){
-  console.log('Listening on server *:' + config.port);
+http.listen(app.get('port'), function(){
+  console.log('Listening on server *:' + app.get('port'));
 });
