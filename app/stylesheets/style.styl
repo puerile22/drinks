@@ -28,7 +28,7 @@ body
 header
   font-family 'Quicksand'
   padding 50px 10px
-  color black
+  color #000
   font-size 25px
   text-align center
 
@@ -41,32 +41,33 @@ header
   border-bottom 1px solid darken(main-color, 30%)
   text-shadow 0px -1px 0px darken(main-color, 30%)
 
-.container
-  width 900px
-  margin-top 10px
-  margin-left 50px
-  float left
-  overflow hidden
-  background-color black
 a 
   text-decoration none
   color white
+  
+.main
+  // min-width 1200px
+
 .search
   float left
   height 100px
-  width 800px
-  margin-left 100px
+  width 60%
+  margin-left 30px
   h1
     font-size 35px
     color white
     text-align center
     margin-top 10px
     margin-bottom 15px
+    
+.search-box
+  width 80%
+  display inline-block
 
 .search-text 
-  width 600px
-  height 40px
-  font-size 30px
+  width 90%
+  height 30px
+  font-size 24px
   background-color #262626
   color white
 
@@ -74,9 +75,12 @@ iframe
   margin-top 20px
 
 .container
+  background-color black
   color white
-  width 900px
+  width 60%
   float left
+  margin-top 10px
+  margin-left 30px
   overflow auto
   position relative
   h1
@@ -132,9 +136,10 @@ label
 
 .find
   margin-left 5px
-
-.fa-random
-  float right
+  
+.random
+  .fa-random
+    float right
 
 .sidebar
   float left
@@ -145,7 +150,9 @@ label
     margin-left 10px
     margin-bottom 20px
 
-  
+.fa:hover, .find:hover
+  cursor pointer
+
 p
   line-height 1.8
 

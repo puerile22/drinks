@@ -30,14 +30,16 @@ html
     header
       h1 
         a(href='/') Drankzzz
-    .sidebar
-      block sidebar
-    .search
-      block search
-    p.random Don't know what to search? Click me!  
-    a(href='' onclick='return false;')   
-      i.fa.fa-random.fa-2x
-    .container
-        block content
+    .main
+      .sidebar
+        block sidebar
+      .search
+        block search
+      .random
+        p Don't know what to search? Click me! 
+        a(href='' onclick='return false;')   
+          i.fa.fa-random.fa-2x
+      .container
+          block content
     footer
       p #TeamPengPong
