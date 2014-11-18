@@ -105,29 +105,30 @@ a img {
  */
 body {
   font-family: 'Georgia';
-  background-color: #faf9f0;
+  background-color: #000;
   color: #444;
 }
 header {
   font-family: 'Quicksand';
   padding: 50px 10px;
-  color: #fff;
+  color: #000;
   font-size: 25px;
   text-align: center;
 /*
    * Note the use of the `main-color`
    * variable and the `darken` function
    */
-  background-color: #838387;
+  background-color: #000;
   border-bottom: 1px solid #5c5c5f;
   text-shadow: 0px -1px 0px #5c5c5f;
 }
 .container {
-  width: 640px;
+  width: 900px;
   margin-top: 10px;
   margin-left: 50px;
   float: left;
   overflow: hidden;
+  background-color: #000;
 }
 a {
   text-decoration: none;
@@ -135,23 +136,39 @@ a {
 }
 .search {
   float: left;
-  width: 300px;
-  margin-left: 150px;
+  height: 100px;
+  width: 800px;
+  margin-left: 100px;
+}
+.search h1 {
+  font-size: 35px;
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.search-text {
+  width: 600px;
+  height: 40px;
+  font-size: 30px;
+  background-color: #262626;
+  color: #fff;
 }
 iframe {
   margin-top: 20px;
 }
-.main-content {
-  height: 800px;
-  width: 640px;
+.container {
+  color: #fff;
+  width: 900px;
   float: left;
   overflow: auto;
   position: relative;
 }
-.main-content h1 {
+.container h1 {
   font-size: 30px;
   text-align: center;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 #name {
   text-align: center;
@@ -163,10 +180,11 @@ iframe {
   float: left;
 }
 .info {
-  float: right;
+  float: left;
   display: inline-block;
-  width: 290px;
+  width: 400px;
   margin-right: 20px;
+  margin-top: 60px;
   margin-left: 20px;
 }
 .info h3 {
@@ -177,6 +195,9 @@ iframe {
 }
 .info p {
   text-align: center;
+}
+.info p:last-child {
+  text-align: left;
 }
 .search-result {
   float: left;
@@ -207,11 +228,11 @@ label {
   float: left;
   width: 250px;
   height: 500px;
+  color: #fff;
 }
-.list:hover,
-.fa:hover,
-.find:hover {
-  cursor: pointer;
+.sidebar h2 {
+  margin-left: 10px;
+  margin-bottom: 20px;
 }
 p {
   line-height: 1.8;

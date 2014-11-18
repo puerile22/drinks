@@ -1,16 +1,18 @@
 extend layout
 block search
+  h1.title Cocktails & mixed drink recipes
   select#type
     option(value='name') Name
     option(value='ingredients') Ingredients
-  input.search-text(type='text')
-  i.fa.fa-search
+  input.search-text(type='text' placeholder='search for drink recipe')
+  i.fa.fa-search.fa-2x
 
 block content
 
   
 block sidebar
   .bottle
+    h2 Advanced search
     label(for='skill') Skill Level:
     select#skill
       option(value=0) --None--

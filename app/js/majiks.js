@@ -7,46 +7,46 @@ var socket = io();
 
 $(document).ready(function(){
   socket.on('search result', function(input){
-    $('.main-content').prepend('<h1>Search Result</h1>');
+    $('.container').prepend('<h1>Search Result</h1>');
     var n = 12;
     if (input.length < 12 && input.length !== 0) {
       n = input.length;
     } else if (input.length === 0){
-      $('.main-content').append('<h2>No results found! Please try again.</h2>');
+      $('.container').append('<h2>No results found! Please try again.</h2>');
       return; 
     } 
     for (var i = 0; i < n; i++) {
       h = template(input[i]);
-      $('.main-content').append(h);
+      $('.container').append(h);
     }
   });
 
   socket.on('single recipe', function(input){
     input.video = input.videos[0].video;
     h = templateSingle(input);
-    $('.main-content').append(h);
+    $('.container').append(h);
   });
 
   socket.on('random recipe', function(input){
     input.video = input.videos[0].video;
     h = templateSingle(input);
-    $('.main-content').append(h);
-    $('.main-content').find('.back').remove();
+    $('.container').append(h);
+    $('.container').find('.back').remove();
   });
 
   socket.on('top recipe', function(input){
-    $('.main-content').prepend('<h1>Top Drinks</h1>');
+    $('.container').prepend('<h1>Top Drinks</h1>');
     var array = [];
     for(var i = 0; i < 9; i++) {
       var j = Math.floor(Math.random() * input.length);
       array.push(input.splice(j, 1));
       h = template(array[i][0]);
-      $('.main-content').append(h);
+      $('.container').append(h);
     }
   });
 
   $('.fa-random').click(function(e){
-    $('.main-content').empty();
+    $('.container').empty();
     socket.emit('random', function(){
     });
   });
@@ -55,7 +55,7 @@ $(document).ready(function(){
     var key = e.which;
     if (key === 13) {
       $(document).trigger('search');
-      $('.main-content').empty();
+      $('.container').empty();
     }
   });
 
@@ -76,7 +76,7 @@ $(document).ready(function(){
 
   $('.bottle').on('click','.find', function(){
     var arr = [];
-    $('.main-content').empty();
+    $('.container').empty();
     arr.push($('#skill').val());
     arr.push($('#taste').val());
     arr.push($('#occasion').val());
@@ -85,14 +85,14 @@ $(document).ready(function(){
     setTimeout(function(){$('.bottle').find('select').val('0');},1000);
   });
 
-  $('.main-content').on('click','.list', function(){
-    searchResult = $('.main-content').children();
+  $('.container').on('click','.list', function(){
+    searchResult = $('.container').children();
     var id = $(this).attr('id');
-    $('.main-content').empty();
+    $('.container').empty();
     socket.emit('result',id);
   });
 
-  $('.main-content').on('click','.back', function(){
-    $('.main-content').empty().append(searchResult);
+  $('.container').on('click','.back', function(){
+    $('.container').empty().append(searchResult);
   });
 });
