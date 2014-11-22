@@ -1,8 +1,8 @@
 # Drankzzz
 
 ## Overview
-#### [Drankzzz](http://mks.io/drankz) is a mixed drink recipe searching website
-This was the project we did in our first hackathon at Makersquare. We were trying to explore new technologies and learn to pair programming in this project.
+#### [Drankzzz](http://mks.io/drankz) is a mixed drink recipe search website
+We built this project in our first hackathon at MakerSquare. Our goals were to explore new technologies and learn to pair programming.
 
 ##Table of contents
 * [Purpose](#purpose)
@@ -11,7 +11,7 @@ This was the project we did in our first hackathon at Makersquare. We were tryin
 * [Team Members](#team-members)
 
 ##Purpose
-To learn how to create a web application using the following technology.
+To learn how to create a web application using the following technologies:
 
 * Node.js
 * Socket.io
@@ -23,7 +23,7 @@ To learn how to create a web application using the following technology.
 
 The latest build of drankzzz is available [here](http://mks.io/drankz).
 
-1. Search for recipe based on recipe name or ingredients.
+1. Search for recipes by recipe name or ingredients.
 2. Advanced search based on the skill level needed to make the drink, the taste of the drink, the occasion and color of the drink. 
 3. Click on the shuffle button to give you a random recipe.
 4. Enjoy our website!
@@ -32,7 +32,7 @@ The latest build of drankzzz is available [here](http://mks.io/drankz).
 
 * Node.js
 * Socket.io
-* HTML/CSS  
+* HTML(jade)/CSS
 * Git
 
 ##Team members
